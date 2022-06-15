@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'widgets/category_screen.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -8,6 +10,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Material App',
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white10,
+          centerTitle: true,
+          elevation: 0,
+          titleTextStyle: TextStyle(
+            color: Colors.black,
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
       home: Scaffold(
         appBar: AppBar(
           title: const Text(
@@ -22,19 +36,8 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.white10,
           elevation: 0,
         ),
-        body: const HomePage(),
+        body: CategoryScreen(),
       ),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text("data"),
     );
   }
 }
