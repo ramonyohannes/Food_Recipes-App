@@ -2,19 +2,16 @@ import 'package:flutter/material.dart';
 
 import '../screens/category_items.dart';
 
-import '../data_list.dart';
+import '../dummy_data.dart';
 
 class CategoryScreen extends StatelessWidget {
   //const CategoryScreen({Key? key}) : super(key: key);
 
   void CatItem(BuildContext context, String id, String title) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (_) {
-          return CategoryItems(id, title);
-        },
-      ),
-    );
+    Navigator.of(context).pushNamed(CategoryItems.route, arguments: {
+      "id": id,
+      "title": title,
+    });
   }
 
   @override
@@ -26,25 +23,33 @@ class CategoryScreen extends StatelessWidget {
         //crossAxisSpacing: 5,
         //mainAxisSpacing: 5,
       ),
-      itemCount: categories.length,
+      itemCount: DUMMY_CATEGORIES.length,
       itemBuilder: (BuildContext context, int index) {
         return InkWell(
           onTap: () => CatItem(
             context,
-            categories[index].id,
-            categories[index].title,
+            DUMMY_CATEGORIES[index].id,
+            DUMMY_CATEGORIES[index].title,
           ),
           child: Container(
             padding: const EdgeInsets.all(10),
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               border: Border.all(width: 1),
-              color: categories[index].color,
+              gradient: LinearGradient(
+                colors: [
+                  DUMMY_CATEGORIES[index].color.withOpacity(0.7),
+                  DUMMY_CATEGORIES[index].color,
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              //color: categories[index].color,
               borderRadius: BorderRadius.circular(5),
             ),
             child: Center(
               child: Text(
-                categories[index].title,
+                DUMMY_CATEGORIES[index].title,
                 style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,

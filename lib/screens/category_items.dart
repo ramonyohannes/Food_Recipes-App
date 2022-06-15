@@ -1,21 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:mealapp/models/meal.dart';
+
+import '../dummy_data.dart';
 
 class CategoryItems extends StatelessWidget {
   //const CategoryItems({Key? key}) : super(key: key);
   static const route = "./CategoryItems";
 
-  final String id;
-  final String title;
-  CategoryItems(this.id, this.title);
-
   @override
   Widget build(BuildContext context) {
+    final args =
+        ModalRoute.of(context)!.settings.arguments as Map<String, String>;
+    final title = args["title"];
+    final id = args["id"];
+
+    final categoryMeals = DUMMY_MEALS.where((meal) {
+      return meal.categories.contains(id);
+    });
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(title.toString()),
       ),
-      body: Center(
-        child: Text(id),
+      body: Column(
+        children: [
+          ...categoryMeals.map((meal) {
+            return Text(meal.title);
+          }).toList()
+        ],
       ),
     );
   }

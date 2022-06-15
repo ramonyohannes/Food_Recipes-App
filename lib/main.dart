@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'widgets/category_screen.dart';
+import './screens/category_items.dart';
 
 void main() => runApp(MyApp());
 
@@ -38,6 +39,9 @@ class MyApp extends StatelessWidget {
         ),
         body: CategoryScreen(),
       ),
+      routes: {
+        CategoryItems.route: (_) => CategoryItems(),
+      },
     );
   }
 }
