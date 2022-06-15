@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mealapp/models/meal.dart';
 
+import './category_meals_screen.dart';
+
 import '../dummy_data.dart';
 
 class CategoryItems extends StatelessWidget {
@@ -22,10 +24,17 @@ class CategoryItems extends StatelessWidget {
       appBar: AppBar(
         title: Text(title.toString()),
       ),
-      body: Column(
+      body: ListView(
         children: [
           ...categoryMeals.map((meal) {
-            return Text(meal.title);
+            return CategoryMealsScreen(
+              id: meal.id,
+              title: meal.title,
+              imageUrl: meal.imageUrl,
+              duration: meal.duration,
+              complexity: meal.complexity,
+              affordability: meal.affordability,
+            );
           }).toList()
         ],
       ),
