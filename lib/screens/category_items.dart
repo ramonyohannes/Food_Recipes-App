@@ -7,7 +7,7 @@ import '../dummy_data.dart';
 
 class CategoryItems extends StatelessWidget {
   //const CategoryItems({Key? key}) : super(key: key);
-  static const route = "./CategoryItems";
+  static const routeName = "./CategoryItems";
 
   @override
   Widget build(BuildContext context) {

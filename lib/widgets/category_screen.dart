@@ -8,7 +8,7 @@ class CategoryScreen extends StatelessWidget {
   //const CategoryScreen({Key? key}) : super(key: key);
 
   void CatItem(BuildContext context, String id, String title) {
-    Navigator.of(context).pushNamed(CategoryItems.route, arguments: {
+    Navigator.of(context).pushNamed(CategoryItems.routeName, arguments: {
       "id": id,
       "title": title,
     });
@@ -35,7 +35,7 @@ class CategoryScreen extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              border: Border.all(width: 1),
+              //  border: Border.all(width: 1),
               gradient: LinearGradient(
                 colors: [
                   DUMMY_CATEGORIES[index].color.withOpacity(0.7),

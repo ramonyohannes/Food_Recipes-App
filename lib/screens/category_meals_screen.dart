@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mealapp/models/meal.dart';
+import 'package:mealapp/screens/category_meals_detail.dart';
 
 class CategoryMealsScreen extends StatelessWidget {
   //const CategoryMealsScreen({Key? key}) : super(key: key);
@@ -51,83 +52,93 @@ class CategoryMealsScreen extends StatelessWidget {
     }
   }
 
+  void detailPage(BuildContext context) {
+    Navigator.of(context).pushNamed(
+      CategoryMealsDetail.routeName,
+      arguments: id,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Column(
-        children: [
-          Stack(
-            children: [
-              ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(15),
-                  topRight: Radius.circular(15),
+    return InkWell(
+      onTap: () => detailPage(context),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    topRight: Radius.circular(15),
+                  ),
+                  child: Image.network(imageUrl),
                 ),
-                child: Image.network(imageUrl),
-              ),
-              Positioned(
-                bottom: 20,
-                right: 2,
-                child: Container(
-                  width: 250,
-                  padding: const EdgeInsets.all(10),
-                  color: Colors.black54,
-                  child: Text(
-                    title,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                Positioned(
+                  bottom: 20,
+                  right: 2,
+                  child: Container(
+                    width: 250,
+                    padding: const EdgeInsets.all(10),
+                    color: Colors.black54,
+                    child: Text(
+                      title,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          Container(
-            // padding: EdgeInsets.all(10),
-            margin: EdgeInsets.all(10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Row(
-                  children: [
-                    const Icon(Icons.schedule),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    Text(complexityText),
-                  ],
-                ),
-                Row(
-                  children: [
-                    const Icon(
-                      Icons.work,
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    Text("$duration min"),
-                  ],
-                ),
-                Row(
-                  children: [
-                    const Icon(
-                      Icons.attach_money,
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    Text(affordibilityText),
-                  ],
-                ),
               ],
             ),
-          )
-        ],
+            Container(
+              // padding: EdgeInsets.all(10),
+              margin: EdgeInsets.all(10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Row(
+                    children: [
+                      const Icon(Icons.schedule),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(complexityText),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.work,
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text("$duration min"),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.attach_money,
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(affordibilityText),
+                    ],
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
