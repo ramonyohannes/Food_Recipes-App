@@ -7,6 +7,8 @@ import '../dummy_data.dart';
 class CategoryScreen extends StatelessWidget {
   //const CategoryScreen({Key? key}) : super(key: key);
 
+  static const routeName = "./CategoryScreens";
+
   void CatItem(BuildContext context, String id, String title) {
     Navigator.of(context).pushNamed(CategoryItems.routeName, arguments: {
       "id": id,

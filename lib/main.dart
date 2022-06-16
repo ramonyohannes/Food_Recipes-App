@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'widgets/category_screen.dart';
 import './screens/category_items.dart';
 import './screens/category_meals_detail.dart';
+import 'screens/filters_screen.dart';
+import './screens/tabs_screen.dart';
+import 'widgets/drawer.dart';
 
 void main() => runApp(MyApp());
 
@@ -17,6 +20,9 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.white10,
           centerTitle: true,
           elevation: 0,
+          iconTheme: IconThemeData(
+            color: Colors.black,
+          ),
           titleTextStyle: TextStyle(
             color: Colors.black,
             fontSize: 25,
@@ -24,9 +30,11 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: Scaffold(
+      home: TabsScreen(),
+
+      /*    Scaffold(
         appBar: AppBar(
-          title: const Text(
+          title: Text(
             'Meals App',
             style: TextStyle(
               fontSize: 25,
@@ -38,11 +46,14 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.white10,
           elevation: 0,
         ),
-        body: CategoryScreen(),
-      ),
+        drawer: DrawerScreen(),
+        body: TabsScreen(),
+      ), */
       routes: {
         CategoryItems.routeName: (_) => CategoryItems(),
         CategoryMealsDetail.routeName: ((_) => CategoryMealsDetail()),
+        FilterScreen.routeName: (_) => FilterScreen(),
+        CategoryScreen.routeName: (_) => CategoryScreen(),
       },
     );
   }

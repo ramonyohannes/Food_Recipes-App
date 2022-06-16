@@ -63,19 +63,6 @@ class CategoryMealsDetail extends StatelessWidget {
                       chosenMeal.ingredients[index],
                     ),
                   );
-                  /*   Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Card(
-                          color: Colors.amber,
-                          child: Text(chosenMeal.ingredients[index]),
-                        ),
-                        //const Divider(),
-                      ],
-                    ),
-                  ); */
                 },
               ),
             ),
