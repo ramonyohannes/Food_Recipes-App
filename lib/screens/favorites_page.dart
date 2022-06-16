@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class Favorites_Screen extends StatelessWidget {
@@ -9,8 +11,15 @@ class Favorites_Screen extends StatelessWidget {
       /*   appBar: AppBar(
         title: Text("Favorites"),
       ), */
-      body: const Center(
-        child: Text("data"),
+      body: Center(
+        child: const Text(
+          "You have no any Favorites, Try adding some",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
     );
   }

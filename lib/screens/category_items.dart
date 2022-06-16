@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mealapp/models/meal.dart';
 
+import '../dummy_data.dart';
+
 import './category_meals_screen.dart';
 
 import '../dummy_data.dart';
@@ -8,6 +10,8 @@ import '../dummy_data.dart';
 class CategoryItems extends StatelessWidget {
   //const CategoryItems({Key? key}) : super(key: key);
   static const routeName = "./CategoryItems";
+  final List<Meal> filterdMeal;
+  CategoryItems(this.filterdMeal);
 
   @override
   Widget build(BuildContext context) {
