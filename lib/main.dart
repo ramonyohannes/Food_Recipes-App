@@ -5,13 +5,39 @@ import './screens/category_items.dart';
 import './screens/category_meals_detail.dart';
 import 'screens/filters_screen.dart';
 import './screens/tabs_screen.dart';
-import 'widgets/drawer.dart';
+import './dummy_data.dart';
+import './models/meal.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
+    Map<String, bool> filters = {
+      "isGlutenFree": false,
+      "isVegan": false,
+      "isVegetarian": false,
+      "isLactoseFree": false,
+    };
+    List<Meal> avalilableMeals = DUMMY_MEALS;
+
+    void setFilters(Map<String, bool> newFilters) {
+      setState(() {
+        filters = newFilters;
+
+        avalilableMeals = DUMMY_MEALS.where((meal) {
+          if (filters["isGlutenFree"] && !meal.isGlutenFree) {
+            return false;
+          }
+        }).toList();
+      });
+    }
+
     return MaterialApp(
       title: 'Material App',
       debugShowCheckedModeBanner: false,
@@ -31,28 +57,10 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: TabsScreen(),
-
-      /*    Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Meals App',
-            style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
-          ),
-          centerTitle: true,
-          backgroundColor: Colors.white10,
-          elevation: 0,
-        ),
-        drawer: DrawerScreen(),
-        body: TabsScreen(),
-      ), */
       routes: {
         CategoryItems.routeName: (_) => CategoryItems(),
         CategoryMealsDetail.routeName: ((_) => CategoryMealsDetail()),
-        FilterScreen.routeName: (_) => FilterScreen(),
+        FilterScreen.routeName: (_) => FilterScreen(filters, setFilters),
         CategoryScreen.routeName: (_) => CategoryScreen(),
       },
     );
